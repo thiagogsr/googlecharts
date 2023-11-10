@@ -164,7 +164,7 @@ class Gchart
   end
 
   def max_value=(max_v)
-    if max_v =~ /false/
+    if /false/ =~ max_v.to_s
       @max_value = false
     else
       @max_value = max_v
@@ -172,7 +172,7 @@ class Gchart
   end
 
   def min_value=(min_v)
-    if min_v =~ /false/
+    if /false/ =~ min_v.to_s
       @min_value = false
     else
       @min_value = min_v
@@ -419,7 +419,7 @@ class Gchart
   # or
   # Gchart.line(:legend => ['first label', 'last label'])
   def set_legend
-    if type.to_s =~ /meter/
+    if /meter/ =~ type.to_s
       @labels = legend
       return set_labels
     end
