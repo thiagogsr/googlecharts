@@ -27,7 +27,7 @@ describe "generating a default Gchart" do
   end
 
   it "should create a line break when a pipe character is encountered" do
-    @chart = Gchart.line(:title => "title|subtitle")	
+    @chart = Gchart.line(:title => "title|subtitle")
     expect(@chart).to include("chtt=title\nsubtitle")
   end
 
@@ -382,7 +382,7 @@ describe "a radar chart" do
   it "should allow axis labels positions to be used" do
     expect(Gchart.radar(:custom_axis_with_labels => '0,0,50,100')).to include('chxp=0,0,50,100')
   end
-  
+
   it "should allow array of axis labels positions to be used " do
     expect(Gchart.radar(:custom_axis_with_labels => ['0', '0', '50', '100'])).to include('chxp=0,0,50,100')
   end
@@ -680,11 +680,9 @@ describe 'SSL support' do
   end
 
   it "should be available as a file" do
-    pending "unexpected error under Travis CI (should be fixed using http://martinottenwaelter.fr/2010/12/ruby19-and-the-ssl-error/)"
     File.delete('chart.png') if File.exist?('chart.png')
     Gchart.line(:data => [0, 26], :format => 'file', :use_ssl => true)
-    expect(File.exist?('chart.png')).to be_true
+    expect(File.exist?('chart.png')).to be_truthy
     File.delete('chart.png') if File.exist?('chart.png')
   end
 end
-
